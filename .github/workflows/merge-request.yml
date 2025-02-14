@@ -6,24 +6,23 @@ on:
 jobs:
   checkstyle:
     runs-on: ubuntu-latest
-    container: maven:3.9.9-eclipse-temurin-17
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Run checkstyle
+        working-directory: spring-petclinic
         run: mvn checkstyle:check
 
       - name: Save checkstyle as artifact
         uses: actions/upload-artifact@v4
         with:
           name: checkstyle-report
-          path: checkstyle-result.xml
+          path: spring-petclinic/checkstyle-result.xml
   
   test:
     runs-on: ubuntu-latest
     needs: checkstyle
-    container: maven:3.9.9-eclipse-temurin-17
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -34,7 +33,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: test
-    container: maven:3.9.9-eclipse-temurin-17
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
