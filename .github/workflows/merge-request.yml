@@ -12,7 +12,7 @@ jobs:
 
       - name: Run checkstyle
         working-directory: spring-petclinic
-        run: mvn checkstyle:check > /dev/null
+        run: mvn checkstyle:checkstyle
 
       - name: Save checkstyle as artifact
         uses: actions/upload-artifact@v4
