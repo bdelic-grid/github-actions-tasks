@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run checkstyle
-        uses: mvn checkstyle:check
+        run: mvn checkstyle:check
 
       - name: Save checkstyle as artifact
         uses: actions/upload-artifact@v4
@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run tests
-        uses: mvn test
+        run: mvn test
 
   build:
     runs-on: ubuntu-latest
