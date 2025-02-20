@@ -31,6 +31,7 @@ jobs:
         working-directory: spring-petclinic
         run: mvn test
 
+
   build:
     runs-on: ubuntu-latest
     needs: test
@@ -41,7 +42,7 @@ jobs:
       - name: Build without tests
         working-directory: spring-petclinic
         run: mvn clean install -DskipTests
-        
+
   docker:
     runs-on: ubuntu-latest
     needs: [checkstyle, test, build]
